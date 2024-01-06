@@ -1,0 +1,145 @@
+@import "index";
+//# Text
+$Very-dark-desaturated-blue: hsl(238, 29%, 16%);
+$Soft-red: hsl(14, 88%, 65%);
+// Background
+$Soft-violet: hsl(273, 75%, 66%);
+$Soft-blue: hsl(240, 73%, 65%);
+//  Text
+$Very-dark-grayish-blue: hsl(237, 12%, 33%);
+$Dark-grayish-blue: hsl(240, 6%, 50%);
+//# Dividers
+$Light-grayish-blue: hsl(240, 5%, 91%);
+$Font-size: 12px;
+summary::marker {
+  content: "";
+}
+body {
+  min-height: 100svh;
+  font-family: "Kumbh Sans", sans-serif;
+  background: linear-gradient($Soft-violet 25%, $Soft-blue);
+  font-size: $Font-size;
+  padding-top: 9rem;
+  padding-bottom: 3rem;
+  @include place__item__center;
+  @media (min-width: 64rem) {
+    padding: 0;
+  }
+  .main {
+    background: white;
+    min-height: 60vh;
+    max-height: max-content;
+    width: 90vw;
+    border-radius: 1rem;
+    padding: 2.2rem;
+    @include flex__column;
+    box-shadow: 0 10px 10px rgba($color: #000000, $alpha: 0.5);
+    @media (min-width: 64rem) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0;
+      width: 66vw;
+      height: 31rem;
+      box-shadow: 0 15px 10px rgba($color: #000000, $alpha: 0.3);
+    }
+    .illustration {
+      @media (min-width: 64rem) {
+        background: url(./images/illustration-woman-online-desktop.svg)
+            no-repeat,
+          url(./images/bg-pattern-desktop.svg) no-repeat;
+        background-size: 103%, 170%;
+        background-position: -5.5rem, -24rem -9rem;
+      }
+      &::before {
+        content: "";
+        background: url(./images/illustration-woman-online-mobile.svg),
+          url(./images/bg-pattern-mobile.svg);
+        background-repeat: no-repeat, no-repeat;
+        background-position: center top, center top 7.5rem;
+        position: absolute;
+        top: 1.6rem;
+        left: calc(50% - 8rem);
+        width: 16rem;
+        height: 16rem;
+        @media (min-width: 64rem) {
+          background: url(./images/illustration-box-desktop.svg);
+          width: 100px;
+          height: 180px;
+          top: 18rem;
+          left: 11.5rem;
+          background-position: center;
+          z-index: 2;
+        }
+      }
+    }
+    .faq__container {
+      flex: 1;
+      padding-top: 7rem;
+      padding-bottom: 1rem;
+      display: grid;
+      @media (min-width: 64rem) {
+        padding: 3rem 5rem 3rem 0;
+        width: 100%;
+        height: 28rem;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        color: $Very-dark-desaturated-blue;
+        font-weight: 700;
+        @media (min-width: 64rem) {
+          text-align: start;
+          margin-left: 2rem;
+        }
+      }
+      .question__block {
+        cursor: pointer;
+        border-bottom: 1px solid $Light-grayish-blue;
+        padding: 1rem 0;
+        @media (min-width: 64rem) {
+          padding: 0.5rem 0;
+          margin-left: 2rem;
+        }
+        &[open] {
+          .question {
+            font-weight: 700;
+            color: $Very-dark-desaturated-blue;
+            transition: 0.1s ease;
+            &::after {
+              transform: rotate(180deg);
+            }
+          }
+        }
+        .question {
+          position: relative;
+          cursor: pointer;
+          color: $Dark-grayish-blue;
+          &::after {
+            content: "";
+            position: absolute;
+            background: url(./images/icon-arrow-down.svg) no-repeat;
+            background-position: center;
+            top: 0.01rem;
+            right: 0;
+            width: 1rem;
+            height: 1rem;
+            transform: rotate(0);
+            transition: 0.5s ease;
+          }
+          &:hover {
+            color: $Soft-red;
+          }
+        }
+        .answer {
+          padding: 0.5rem 0 0;
+          color: $Dark-grayish-blue;
+        }
+      }
+    }
+  }
+}
+
+.min {
+  font-size: 0.65rem;
+}
